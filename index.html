@@ -386,7 +386,7 @@ table.vt{border-collapse:collapse;width:100%;font:500 15px/1.4 var(--ff-ui);marg
 .wbchip .k{font:600 11.5px/1 var(--ff-ui);color:var(--ink-3)}
 .wbchip.entdecke .k{color:var(--rise)} .wbchip.quiz .k{color:var(--right)} .wbchip.rezept .k{color:var(--gg)}
 .wbchip[aria-selected="true"]{border-color:var(--gg);box-shadow:inset 0 0 0 1px var(--gg);background:var(--gg-soft)}
-.wbgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+.wbgrid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;align-items:start}
 .wbmain{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .wbbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line-2);font-family:var(--ff-ui)}
 .wblbl{font:600 13px var(--ff-ui);color:var(--ink-3)}
@@ -402,7 +402,7 @@ table.vt{border-collapse:collapse;width:100%;font:500 15px/1.4 var(--ff-ui);marg
 .wbstage.withcas{grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr)}
 .wbcas{display:none;min-width:0;border-right:1px solid #D9D9D9;background:#fff}
 .wbstage.withcas .wbcas{display:block}
-.wbappwrap{position:relative;min-width:0;background:#fff}
+.wbappwrap{position:relative;min-width:0;background:#fff;overflow:hidden}
 .wbapp{min-height:300px}
 .ggreal{display:block}
 .wbload{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#555;font:500 15px var(--ff-ui)}
@@ -426,7 +426,7 @@ ol.altl .cout{font:400 17px/1.5 var(--ff-serif);margin-top:4px;overflow-x:auto}
 .ovsay{font-size:13.5px;color:var(--ink-2);margin-top:3px}
 .ovnote{margin:4px 12px 8px;font-size:14px;color:var(--ink-2)}
 .ovdiff{margin:6px 12px 12px;padding:10px 12px;border-radius:8px;background:var(--gg-soft);font-size:14px;line-height:1.45}
-.ovdiff b{display:block;margin-bottom:4px}
+.ovdiff>b{display:block;margin-bottom:4px}
 .ovdiff ul{margin:0;padding-left:18px}
 .wbside{display:flex;flex-direction:column;gap:12px;min-width:0}
 .wbgoal h4{font:700 19px/1.3 var(--ff-ui);margin:4px 0 6px}
@@ -450,8 +450,10 @@ ol.bubbles li code.gg{white-space:normal}
 .casn2{background:#F5F5F5;color:#888;font-size:12px;text-align:center;padding-top:10px;border-right:1px solid #EEE}
 .casrow2>div{padding:7px 9px;min-width:0}
 .cin{font:500 14.5px/1.4 system-ui,sans-serif;word-break:break-word}
-.cout{font:400 17px/1.5 "Source Serif 4",Georgia,serif;overflow-x:auto;color:#111}
-.cout .pre{color:#6557D2;font:700 14px system-ui,sans-serif}
+.cout{font:400 17px/1.5 "Source Serif 4",Georgia,serif;overflow-x:auto}
+.casp .cout{color:#111}
+.casp .cout .pre{color:#6557D2}
+.cout .pre{color:var(--gg);font:700 14px system-ui,sans-serif}
 .cout .busy{color:#999}
 .casrow2.entry{border-top:1px solid #E3E3E3}
 .casin2{border:0;outline:0;padding:9px;font:500 14.5px system-ui,sans-serif;width:100%;background:#fff;color:#222}
@@ -492,6 +494,30 @@ ol.bubbles li code.gg{white-space:normal}
 .fin input{border:1.5px solid var(--line);border-radius:8px;padding:9px 12px;font:500 16px var(--ff-ui);background:var(--panel);color:var(--ink);min-width:min(320px,60vw)}
 @media (max-width:1100px){.wbgrid{grid-template-columns:1fr}}
 @media (max-width:760px){.g6{grid-template-columns:1fr}.g6alg{border-right:0;border-bottom:1px solid #D9D9D9;max-height:240px}.wbstage.withcas{grid-template-columns:1fr}.wbcas{border-right:0;border-bottom:1px solid #D9D9D9}.tw-h,.tw-r{grid-template-columns:100px 1fr 1fr}.steck .sr{grid-template-columns:1fr}}
+
+/* Großansicht */
+.sidetog{display:none}
+.wb.big{position:fixed;inset:0;z-index:50;margin:0;background:var(--bg);padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+body.wbbig{overflow:hidden}
+.wb.big .wbchips{display:none}
+.wb.big .wbgrid{display:block;height:100%;position:relative}
+.wb.big .wbmain{border-radius:0;border:0;height:100%}
+.wb.big .wbstage.withcas{grid-template-columns:minmax(260px,.55fr) minmax(0,1.9fr)}
+.wb.big .caspl{max-height:none}
+.wb.big .g6gra .ggsvg{height:calc(var(--g6h) - 4px);width:100%}
+.wb.big .wbside{position:absolute;right:16px;bottom:16px;width:min(360px,calc(100% - 32px));max-height:calc(100% - 90px);overflow:auto;background:var(--panel);border:1.5px solid var(--line);border-radius:12px;box-shadow:0 22px 50px -18px rgba(0,0,0,.45);z-index:6;padding:0 14px 14px}
+.wb.big .sidetog{display:block;position:sticky;top:0;z-index:1;width:calc(100% + 28px);margin:0 -14px 8px;border:0;border-bottom:1px solid var(--line-2);background:var(--panel);color:var(--ink-2);font:600 14px var(--ff-ui);padding:11px 14px;text-align:left;cursor:pointer}
+.wb.big .sidetog::after{content:"▾";float:right}
+.wb.big .wbside.min .sidetog::after{content:"▴"}
+.sidetog .st-c{display:none}
+.wb.big .wbside.min .st-o{display:none} .wb.big .wbside.min .st-c{display:inline}
+.wb.big .wbside.min .sidebody{display:none}
+.wb.big .wbside.min{max-height:none;padding-bottom:0}
+.wb.big .wbside.min .sidetog{margin-bottom:0;border-bottom:0}
+.wb.big .wbov{right:28px;top:12px;max-height:calc(100% - 90px);width:min(400px,calc(100% - 56px))}
+.btn.bigb{display:inline-flex;align-items:center;gap:6px}
+.btn.bigb[aria-pressed="true"]{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+@media (max-width:760px){.wb.big .wbside{left:8px;right:8px;width:auto;bottom:8px;max-height:45%}.wb.big .wbstage.withcas{grid-template-columns:1fr}.wb.big .wbcas{max-height:30vh;overflow:auto}}
 </style></head>
 <body class="p1">
 <nav class="rail" aria-label="Stationen">
@@ -1686,13 +1712,13 @@ class RealApp {
   async _init() {
     const id = 'omggb' + (++APPN); this.id = id;
     const box = h('div', { id: id + 'box', class: 'ggreal' }); this.host.append(box); this.box = box;
-    const w = Math.max(300, Math.round(this.host.clientWidth || 760)), hgt = this.o.h || 500;
+    const w = Math.max(280, Math.round(this.host.clientWidth || 760)), hgt = this.o.h || 500;
     await new Promise((res) => {
       const params = {
         appName: 'classic', id, width: w, height: hgt, language: 'de', country: 'AT', perspective: 'AG',
         showToolBar: !!this.o.toolbar, showMenuBar: false, showAlgebraInput: true, algebraInputPosition: 'algebra',
         enableRightClick: true, enableLabelDrags: false, enableShiftDragZoom: true, showZoomButtons: true, showResetIcon: false,
-        showFullscreenButton: false, allowStyleBar: false, useBrowserForJS: false, borderColor: '#C6D0D6', preventFocus: true,
+        showFullscreenButton: false, allowStyleBar: false, useBrowserForJS: false, borderColor: '#C6D0D6', preventFocus: true, showKeyboardOnFocus: 'false',
         appletOnLoad: api => { this.api = api; res(); }
       };
       new GGBApplet(params, true).inject(id + 'box');
@@ -1700,8 +1726,9 @@ class RealApp {
     try { this.api.setRounding('2'); } catch (e) { }
     const fire = () => this.listeners.forEach(f => { try { f(); } catch (e) { } });
     try { this.api.registerUpdateListener(fire); this.api.registerAddListener(fire); this.api.registerRemoveListener(fire); } catch (e) { }
-    this._ro = () => { const W = Math.max(300, Math.round(this.host.clientWidth)); if (Math.abs(W - this._w) > 8) { this._w = W; try { this.api.setSize(W, this.o.h || 500); } catch (e) { } } };
-    this._w = w; window.addEventListener('resize', this._ro);
+    this._ro = () => { const W = Math.max(280, Math.round(this.host.clientWidth)); const H = this.bigH || this.o.h || 500; if (W && (Math.abs(W - this._w) > 4 || H !== this._h)) { this._w = W; this._h = H; try { this.api.setSize(W, H); } catch (e) { } } };
+    this._w = w; this._h = hgt; window.addEventListener('resize', this._ro);
+    if (window.ResizeObserver) { this._obs = new ResizeObserver(() => this._ro()); this._obs.observe(this.host); }
   }
   async _retry(fn) { for (let i = 0; i < 50; i++) { try { return fn(); } catch (e) { if (/not loaded yet/i.test(String(e))) { await new Promise(r => setTimeout(r, 400)); continue; } throw e; } } throw new Error('GeoGebra antwortet nicht.'); }
   async cmd(de) { await this.ready; const r = await this._retry(() => this.api.evalCommandGetLabels(toEN(de))); return r ? String(r).split(',').filter(Boolean) : []; }
@@ -1732,9 +1759,10 @@ class RealApp {
     if (s.aux) try { a.setAuxiliary(n, true); } catch (e) { }
   }
   set(n, v) { this.api.setValue(n, v); }
-  persp(p) { try { this.api.setPerspective(p); } catch (e) { } }
+  persp(p) { try { this.api.setPerspective(p); } catch (e) { } setTimeout(() => this._ro && this._ro(), 60); }
+  setHeight(H) { this.bigH = H; this._ro && this._ro(); }
   onUpdate(f) { this.listeners.push(f); }
-  destroy() { window.removeEventListener('resize', this._ro); try { this.api && this.api.remove(); } catch (e) { } this.host.innerHTML = ''; this.listeners = []; }
+  destroy() { window.removeEventListener('resize', this._ro); if (this._obs) this._obs.disconnect(); try { this.api && this.api.remove(); } catch (e) { } this.host.innerHTML = ''; this.listeners = []; }
 }
 
 /* =====================================================================
@@ -1892,6 +1920,7 @@ class SimApp {
     this._draw();
   }
   set(n, v) { const o = this._get(n); if (o) { o.node = { t: 'num', v, raw: String(v) }; this._recalc(); } }
+  setHeight(H) { this.el.style.setProperty('--g6h', (H || this.o.h || 500) + 'px'); this.el.classList.toggle('big', !!H); }
   persp(p) { this.alg.style.display = p.includes('A') ? '' : 'none'; this.el.classList.toggle('noalg', !p.includes('A')); }
   onUpdate(f) { this.listeners.push(f); }
   destroy() { this.objs.forEach(o => o._t && cancelAnimationFrame(o._t)); this.host.innerHTML = ''; this.listeners = []; }
@@ -2022,6 +2051,7 @@ function modeBadge() {
 }
 
 function workbench(root, scenes, o = {}) {
+  let loadingScene = false;
   let app = null, cas = null, scene = scenes[0], path = 'alg', si = -1, busy = false, alt = null, token = 0, built = false;
   const host = h('div', { class: 'wbapp' });
   const casBox = h('div', { class: 'wbcas' });
@@ -2033,14 +2063,29 @@ function workbench(root, scenes, o = {}) {
   const pathSeg = seg([['alg', 'Algebra-Ansicht'], ['cas', 'CAS']], 'alg', v => { path = v; startScene(); }, 'Weg');
   const altBtn = btn('Alternative einblenden', () => toggleAlt(), 'ghost alt');
   const resetBtn = btn('Neu starten', () => startScene(), 'ghost');
-  const bar = h('div', { class: 'wbbar' }, modeBadge(), h('span', { class: 'sp' }), h('span', { class: 'wblbl' }, 'Weg:'), pathSeg, altBtn, resetBtn);
+  const bigBtn = h('button', { type: 'button', class: 'btn ghost bigb', 'aria-pressed': 'false', html: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Großansicht</span>' });
+  bigBtn.onclick = () => setBig(!big);
+  let big = false;
+  function bigHeight() { const barH = bar.getBoundingClientRect().height || 56; return Math.max(320, Math.round(window.innerHeight - barH - 2)); }
+  function setBig(v) {
+    big = v; el.classList.toggle('big', v); document.body.classList.toggle('wbbig', v);
+    bigBtn.setAttribute('aria-pressed', v); bigBtn.querySelector('span').textContent = v ? 'Großansicht beenden' : 'Großansicht';
+    side.classList.toggle('min', v && !!alt);
+    if (app) app.setHeight(v ? bigHeight() : null);
+    if (!v) el.scrollIntoView({ block: 'start' });
+  }
+  window.addEventListener('resize', () => { if (big && app) app.setHeight(bigHeight()); });
+  document.addEventListener('keydown', e => { if (big && e.key === 'Escape') setBig(false); });
+  const sideToggle = h('button', { type: 'button', class: 'sidetog', 'aria-label': 'Anleitung ein- oder ausklappen' }, h('span', { class: 'st-o' }, 'Anleitung ausblenden'), h('span', { class: 'st-c' }, 'Anleitung einblenden'));
+  sideToggle.onclick = () => side.classList.toggle('min');
+  const bar = h('div', { class: 'wbbar' }, modeBadge(), h('span', { class: 'sp' }), h('span', { class: 'wblbl' }, 'Weg:'), pathSeg, altBtn, resetBtn, bigBtn);
   const goal = h('div', { class: 'wbgoal' });
   const steps = h('ol', { class: 'bubbles' });
   const nextB = btn('Nächster Schritt', () => step(), 'primary');
   const allB = btn('Alle Schritte', () => runAll(), 'ghost');
   const ctr = h('div', { class: 'tourbar' }, nextB, allB);
   const watch = h('div', { class: 'wbwatch' });
-  const side = h('div', { class: 'wbside' }, goal, steps, ctr, watch);
+  const side = h('div', { class: 'wbside' }, sideToggle, h('div', { class: 'sidebody' }, goal, steps, ctr, watch));
   const el = h('div', { class: 'wb' + (scenes.length > 1 ? '' : ' single') }, scenes.length > 1 ? chips : null, h('div', { class: 'wbgrid' }, h('div', { class: 'wbmain' }, bar, stageEl), side));
   root.append(el);
 
@@ -2051,8 +2096,9 @@ function workbench(root, scenes, o = {}) {
     loading.style.display = '';
     const st = await GGB.load();
     host.innerHTML = '';
-    app = st === 'ok' ? new RealApp(host, { h: o.h || 470 }) : new SimApp(host, { h: o.h || 470 });
-    try { await app.ready; } catch (e) { app = new SimApp(host, { h: o.h || 470 }); }
+    app = st === 'ok' ? new RealApp(host, { h: o.h || 540 }) : new SimApp(host, { h: o.h || 540 });
+    try { await app.ready; } catch (e) { app = new SimApp(host, { h: o.h || 540 }); }
+    if (big) app.setHeight(bigHeight());
     loading.style.display = 'none';
     cas = casPanel(app); cas.setSrc(app.real); casBox.innerHTML = ''; casBox.append(cas);
     app.onUpdate(() => updWatch());
@@ -2066,8 +2112,9 @@ function workbench(root, scenes, o = {}) {
     }
     if (s.view) a.view(s.view);
   }
+  let readyP = Promise.resolve(), readyR = null;
   async function startScene() {
-    const my = ++token; closeAlt(); si = -1; busy = true;
+    const my = ++token; closeAlt(); si = -1; busy = true; loadingScene = true; readyP = new Promise(r => readyR = r);
     const s = scene;
     goal.innerHTML = '';
     goal.append(h('div', { class: 'wbkind ' + (s.kind || 'rezept') }, s.kind === 'entdecke' ? 'Entdecke' : s.kind === 'quiz' ? 'Teste dich' : 'Wie komme ich zu …?'), h('h4', { html: s.title }));
@@ -2093,7 +2140,7 @@ function workbench(root, scenes, o = {}) {
     if (s.after) await s.after(a, api);
     if (s.kind === 'quiz') quiz(a, s, my);
     if (my !== token) return;
-    busy = false; buildWatch(); updWatch();
+    busy = false; loadingScene = false; readyR && readyR(); buildWatch(); updWatch();
   }
   function buildWatch() {
     watch.innerHTML = ''; if (!scene.watch) return;
@@ -2144,6 +2191,7 @@ function workbench(root, scenes, o = {}) {
     return created;
   }
   async function step() {
+    if (loadingScene) { nextB.textContent = 'GeoGebra lädt …'; const t = token; await readyP; if (t !== token) return; nextB.textContent = 'Nächster Schritt'; }
     if (busy || !scene.paths) return; const P = scene.paths[path]; if (si >= P.steps.length - 1) return;
     const my = token; busy = true; si++; const lis = steps.querySelectorAll('li');
     lis.forEach((li, j) => { li.classList.toggle('on', j === si); li.classList.toggle('done', j < si); });
@@ -2152,12 +2200,13 @@ function workbench(root, scenes, o = {}) {
     if (si >= P.steps.length - 1) { nextB.disabled = true; nextB.textContent = 'Fertig'; lis[si].classList.add('done'); if (scene.done) goal.append(h('div', { class: 'fb ok', html: scene.done })); if (scene.onDone) try { scene.onDone(app, path); } catch (e) { console.warn(e); } }
     busy = false; updWatch();
   }
-  async function runAll() { const my = token; while (my === token && scene.paths && si < scene.paths[path].steps.length - 1) { await step(); await sleep(200); } }
+  async function runAll() { if (loadingScene) await readyP; const my = token; while (my === token && scene.paths && si < scene.paths[path].steps.length - 1) { await step(); await sleep(200); } }
 
   async function toggleAlt() { if (alt) { closeAlt(); return; } await openAlt(); }
   async function openAlt() {
     if (!scene.paths || busy) return;
     const other = path === 'alg' ? 'cas' : 'alg'; const P = scene.paths[other]; if (!P) return;
+    if (big) side.classList.add('min');
     alt = { made: [] }; ov.innerHTML = ''; ov.classList.add('on'); altBtn.setAttribute('aria-pressed', 'true');
     const list = h('ol', { class: 'altl' });
     ov.append(h('div', { class: 'ovhead' }, h('span', { class: 'ovk' }, 'Alternative'), h('b', {}, 'Derselbe Weg ' + (other === 'cas' ? 'im CAS' : 'in der Algebra-Ansicht')), h('button', { type: 'button', class: 'ovx', 'aria-label': 'Schließen', onclick: closeAlt }, '×')), list);
@@ -2176,12 +2225,12 @@ function workbench(root, scenes, o = {}) {
     }
   }
   function closeAlt() { if (!alt) return; alt.made.forEach(l => app && app.del(l)); alt = null; ov.classList.remove('on'); ov.innerHTML = ''; altBtn.setAttribute('aria-pressed', 'false'); }
-  function fmtVal(s) { return String(s).replace(/_\{(\w+)\}/g, '<sub>$1</sub>').replace(/-/g, '−').replace(/\*/g, '·'); }
+  function fmtVal(s) { return String(s).replace(/_\{(\w+)\}/g, '<sub>$1</sub>').replace(/_(\w)/g, '<sub>$1</sub>').replace(/-/g, '−').replace(/\*/g, '·'); }
 
   const api = {
     get app() { return app; }, scene: () => scene,
     async enter() { if (!built) { built = true; } await startScene(); },
-    leave() { token++; closeAlt(); if (app) { app.destroy(); app = null; } cas = null; loading.style.display = ''; },
+    leave() { if (big) setBig(false); token++; closeAlt(); if (app) { app.destroy(); app = null; } cas = null; loading.style.display = ''; },
     pick(id) { const i = scenes.findIndex(s => s.id === id); if (i >= 0) chips.children[i].click(); },
     el
   };
